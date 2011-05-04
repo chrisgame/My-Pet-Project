@@ -39,7 +39,7 @@ get '/event/:year/:month/:day' do |year, month, day|
 end
 
 put '/event/:year/:month/:day' do |year, month, day|
-  @@data => "#{year}#{month}#{day}"
+#  @@data"#{year}#{month}#{day}"
   "#{year}#{month}#{day}"
 end
 
