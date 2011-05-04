@@ -1,0 +1,77 @@
+.tl-events {
+    width: 11800px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tl-events li {
+    float: left; /* allows the lis to stack against eachother */
+    margin-right: 10px;
+    width: 200px;
+}
+
+.tl-events ul li a {
+    text-decoration: none;
+    color: #000;
+    background: #fdf283;
+    border: 1px solid #fdf283;
+    -moz-border-radius: 4px;
+    display: block;
+    margin: 5px 2px;
+    padding: 2px;
+}
+
+.tl-events ul li a:hover, ti-events ul li a:focus {
+    background: none repeat scroll 0 0 #ffe807;
+    border: 1px solid #ffc207;
+    outline: 0 none;
+}
+
+.tl-events ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tl-events {
+    list-style: none outside none;
+}
+
+body {
+    margin: 0;
+    font: 1em "Trebuchet MS", verdana, arial, sans-serif;
+    font-size: 85%;
+    background: black;
+    color: white;
+}
+
+#timeline {
+    border: 2px solid #fdf283;
+    background: black;
+    color: white;
+    height: 375px;
+    margin-top: 10px;
+    overflow: auto;
+    padding: 20px;
+}
+
+element.style {
+    cursor: -moz-grab;
+}
+
+div, ul, li {
+    zoom: 1;
+}
+
+ul ul, ul ul li {
+    zoom: 0;
+}
+
+.doodle {
+    display: none;
+}
+
+h1 {
+    color: #ffe807
+}

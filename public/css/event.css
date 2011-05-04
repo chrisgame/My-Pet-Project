@@ -1,0 +1,15 @@
+h1 {
+    color: #ffe807
+}
+
+body {
+    margin: 0;
+    font: 1em "Trebuchet MS", verdana, arial, sans-serif;
+    font-size: 85%;
+    background: black;
+    color: white;
+}
+
+div.articleBody{
+    padding: 0 20px 20px;
+}
