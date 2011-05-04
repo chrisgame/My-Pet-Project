@@ -43,3 +43,5 @@ put '/event/:year/:month/:day' do |year, month, day|
   "#{year}#{month}#{day}"
 end
 
+
+
