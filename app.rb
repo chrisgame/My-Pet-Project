@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'haml'
 require 'sinatra'
+require 'yaml'
 
 class MyPetProject < Sinatra::Base
 
@@ -33,18 +34,19 @@ class MyPetProject < Sinatra::Base
   end
 
   get '/event/:year/:month/:day' do |year, month, day|
-    @@events.events.each do |event|
-      event
+    @@events.transaction do
+      @@events["#{year}#{month}#{day}"]['body']
     end
   #  haml :event
   end
 
   put '/event/:year/:month/:day' do |year, month, day|
-    @@events.add_event 'cheese'
-#    @events.add_event(:test1 => params["Test Page body for #{year}#{month}#{day}"])
+    key = "#{year}#{month}#{day}"
+    body = "Test Page body for #{year}#{month}#{day}"
+    @@events.transaction do
+      @@events[key] = {'body' => body}
+    end
     "Received #{year}#{month}#{day}"
   end
   run! if app_file == $0
 end
-
-
