@@ -34,19 +34,16 @@ class MyPetProject < Sinatra::Base
   end
 
   get '/event/:year/:month/:day' do |year, month, day|
-    @@events.transaction do
-      @@events["#{year}#{month}#{day}"]['body']
-    end
-  #  haml :event
+    YAML::load(File.read("#{year}#{month}#{day}.yaml")).collect{|key, value| "The key is #{key}, the value is #{value}\n"}
   end
 
   put '/event/:year/:month/:day' do |year, month, day|
-    key = "#{year}#{month}#{day}"
-    body = "Test Page body for #{year}#{month}#{day}"
-    @@events.transaction do
-      @@events[key] = {'body' => body}
+    event = YAML::Store.new( "#{year}#{month}#{day}.yaml", :Indent => 2 )
+    event.transaction do
+      event[:h1] = 'The H1 of the page'
+      event[:p] = "Test Page body for #{year}#{month}#{day}"
     end
-    "Received #{year}#{month}#{day}"
+    "Stored event for #{year}#{month}#{day}"
   end
   run! if app_file == $0
 end
