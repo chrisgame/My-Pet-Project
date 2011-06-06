@@ -38,11 +38,11 @@ class MyPetProject < Sinatra::Base
   end
 
   put '/event/:year/:month/:day' do |year, month, day|
-    event = YAML::Store.new( "#{year}#{month}#{day}.yaml", :Indent => 2 )
-    event.transaction do
-      event[:h1] = 'The H1 of the page'
-      event[:p] = "Test Page body for #{year}#{month}#{day}"
+    File.open  #  haml :event
+("#{year}#{month}#{day}.yaml", 'w') do |file|
+      file.write(request.body.read.to_s)
     end
+
     "Stored event for #{year}#{month}#{day}"
   end
   run! if app_file == $0
