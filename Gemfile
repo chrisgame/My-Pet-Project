@@ -1,5 +1,6 @@
 source "http://rubygems.org"
 gem "sinatra"
 gem "haml"
+gem "aws-s3"
 gem "ruby-debug"
 gem "ruby-debug-ide"

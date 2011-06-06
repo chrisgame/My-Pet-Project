@@ -5,13 +5,13 @@
   %script{:src => '/js/jquery-1.4.4.min.js', :type => 'text/javascript'}
   %script{:src => '/js/event.js', :type => 'text/javascript'}
   %head
-    %title Article Page Title
+    %title="#{locals[:pageTitle]}"
   %body
     #menuContainer
     .articleBody
     #timelineContainer
-  %h1 Article Page H1
-  %p The body of the text. Lorem ipsum and all that.
+  %h1
+  %p
 
 
 
@@ -37,7 +37,7 @@
 -#    took the engine out and stripped it for a rebuild.
 -#    When the block went to the shop for machining and the deck of the block was skimmed a hairline crack was found
 -#    between the water jacket and two of the cylinders.
--#    At £65 for a complete engine i figured it was worth the risk that it might leak water into the cylinder.</p>
+-#    At ï¿½65 for a complete engine i figured it was worth the risk that it might leak water into the cylinder.</p>
 -#
 -#<p><img src="images/photos/thumbs/DSCF0107.jpg" alt="" id="heaadlineImage" width="1024"></p>
 -#</div>
