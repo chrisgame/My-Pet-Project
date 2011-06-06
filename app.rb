@@ -34,18 +34,7 @@ class MyPetProject < Sinatra::Base
   end
 
   get '/event/:year/:month/:day' do |year, month, day|
-    YAML::load(File.read("#{year}#{month}#{day}.yaml")).collect do |key, value|
-      case key
-        when :pageTitle
-          @pageTitle = value
-        when :h1
-          @h1 = value
-        when :p
-          @p = value
-      end
-    end
-
-    haml:event, :locals => {:pageTitle => @pageTitle}
+    haml:event, :locals => YAML::load(File.read("#{year}#{month}#{day}.yaml"))
   end
 
   put '/event/:year/:month/:day' do |year, month, day|

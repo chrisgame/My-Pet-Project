@@ -10,8 +10,12 @@
     #menuContainer
     .articleBody
     #timelineContainer
-  %h1
-  %p
+  -locals.each do |key, value|
+    -case key
+    -when :h1
+      %h1=value
+    -when :p
+      %p=value
 
 
 
