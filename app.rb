@@ -38,8 +38,7 @@ class MyPetProject < Sinatra::Base
   end
 
   put '/event/:year/:month/:day' do |year, month, day|
-    File.open  #  haml :event
-("#{year}#{month}#{day}.yaml", 'w') do |file|
+    File.open("#{year}#{month}#{day}.yaml", 'w') do |file|
       file.write(request.body.read.to_s)
     end
 
