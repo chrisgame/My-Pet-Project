@@ -16,6 +16,8 @@
       %h1=value
     -when :p
       %p=value
+    -when :image
+      %img{:src => value[:src], :alt => value[:alt], :id => value[:id], :width => value[:width]}
 
 
 

@@ -27,18 +27,19 @@ class MyPetProject < Sinatra::Base
     if month > 12.to_s
       "There are only twelve months"
     else
-      "Year is  #{year} "+
-      "month is  #{month}"
+#      file.thatMatches thisRegex do |File|
+#        YAML::load(File.read("store/#{year}#{month}#{day}.yaml"))
+#      end
     end
   #  haml :event
   end
 
   get '/event/:year/:month/:day' do |year, month, day|
-    haml:event, :locals => YAML::load(File.read("#{year}#{month}#{day}.yaml"))
+      haml:event, :locals => YAML::load(File.read("store/#{year}#{month}#{day}.yaml"))
   end
 
   put '/event/:year/:month/:day' do |year, month, day|
-    File.open("#{year}#{month}#{day}.yaml", 'w') do |file|
+    File.open("store/#{year}#{month}#{day}.yaml", 'w') do |file|
       file.write(request.body.read.to_s)
     end
 
