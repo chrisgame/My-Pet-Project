@@ -1,0 +1,15 @@
+:pageTitle: March 2000
+:body:
+  h1: March 2000
+  p_1: A paragraph to test
+  image_1:
+    :src: "/photos/thumbs/DSCF0100.jpg"
+    :alt: alt Text
+    :id: IdValue
+    :width: 1024
+  p_2: A second paragraph to test
+  image_2:
+    :src: "/photos/thumbs/cheese.jpg"
+    :alt: alt text number 2
+    :id: idValue2
+    :width: 640

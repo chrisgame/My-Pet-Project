@@ -10,13 +10,13 @@
     #menuContainer
     .articleBody
     #timelineContainer
-  -locals.each do |key, value|
+  -locals[:body].each do |key, value|
     -case key
-    -when :h1
+    -when /h1(.*)/
       %h1=value
-    -when :p
+    -when /p(.*)/
       %p=value
-    -when :image
+    -when /image(.*)/
       %img{:src => value[:src], :alt => value[:alt], :id => value[:id], :width => value[:width]}
 
 
