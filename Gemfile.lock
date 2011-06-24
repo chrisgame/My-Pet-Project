@@ -17,6 +17,10 @@ GEM
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
       ruby_core_source (>= 0.1.4)
+    ruby-debug-base19x (0.11.27)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
     ruby-debug-ide19 (0.4.12)
       ruby-debug-base19 (~> 0.11.20)
     ruby-debug19 (0.11.6)
@@ -37,6 +41,7 @@ PLATFORMS
 DEPENDENCIES
   aws-s3
   haml
+  ruby-debug-base19x
   ruby-debug-ide19
   ruby-debug19
   sinatra

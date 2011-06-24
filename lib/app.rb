@@ -19,7 +19,7 @@ class MyPetProject < Sinatra::Base
   end
 
   get '/event/:year' do |year|
-    haml :events
+    haml :events, {}, :locals => STORE.get_all_events_for_year(year)
   end
 
   get '/event/:year/:month' do |year, month|
@@ -34,7 +34,7 @@ class MyPetProject < Sinatra::Base
   end
 
   get '/event/:year/:month/:day' do |year, month, day|
-      haml:event, :locals => YAML::load(File.read("store/#{year}#{month}#{day}.yaml"))
+      haml:event, {}, :locals => YAML::load(File.read("../store/#{year}#{month}#{day}.yaml"))
   end
 
   put '/event/:year/:month/:day' do |year, month, day|

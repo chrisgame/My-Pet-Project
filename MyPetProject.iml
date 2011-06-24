@@ -11,9 +11,10 @@
     <orderEntry type="library" scope="PROVIDED" name="linecache19 (v0.5.12, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="aws-s3 (v0.6.2, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v1.3.1, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby-debug-base19x (v0.11.27, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="haml (v3.1.1, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="builder (v3.0.0, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby_core_source (v0.1.5, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="builder (v3.0.0, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xml-simple (v1.0.16, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-debug-ide19 (v0.4.12, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sinatra (v1.2.6, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
