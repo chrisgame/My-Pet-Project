@@ -1,0 +1,22 @@
+.events li a {
+    text-decoration: none;
+    color: #000;
+    background: #fdf283;
+    border: 1px solid #fdf283;
+    -moz-border-radius: 4px;
+    display: block;
+    margin: 5px 2px;
+    padding: 2px;
+}
+
+.events li a:hover, events li a:focus {
+    background: none repeat scroll 0 0 #ffe807;
+    border: 1px solid #ffc207;
+    outline: 0 none;
+}
+
+.events {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

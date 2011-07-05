@@ -1,5 +1,6 @@
 %html
   %link{:rel => 'stylesheet', :href => '/css/event.css', :type => 'text/css', :media => 'screen'}
+  %link{:rel => 'stylesheet', :href => '/css/events.css', :type => 'text/css', :media => 'screen'}
   %link{:rel => 'stylesheet', :href => '/css/menu.css', :type => 'text/css', :media => 'screen'}
   %link{:rel => 'stylesheet', :href => '/css/timeline.css', :type => 'text/css', :media => 'screen'}
   %script{:src => '/js/jquery-1.4.4.min.js', :type => 'text/javascript'}
@@ -10,9 +11,8 @@
     #menuContainer
     .articleBody
     #timelineContainer
-    %ol
+    %ol.events
       -locals.collect do |key, value|
         %li.milestone
-        -key.scan(/(....)(..)(..)/) do |group|
-          #{group[2]}-#{Date::MONTHNAMES[group[1].to_i]}-#{group[0]}  -   #{value[:pageTitle]}
-
+          -key.scan(/(....)(..)(..)/) do |group|
+            %a #{group[2]}-#{Date::MONTHNAMES[group[1].to_i]}-#{group[0]}  -   #{value[:pageTitle]}

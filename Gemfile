@@ -5,3 +5,7 @@ gem "aws-s3"
 gem "ruby-debug-base19x"
 gem "ruby-debug19"
 gem "ruby-debug-ide19"
+
+gem "cucumber"
+gem "watir-webdriver"
+gem "rspec"
