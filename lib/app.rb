@@ -26,11 +26,8 @@ class MyPetProject < Sinatra::Base
     if month > 12.to_s
       "There are only twelve months"
     else
-#      File.thatMatches thisRegex do |File|
-#        YAML::load(File.read("store/#{year}#{month}#{day}.yaml"))
-#      end
+     haml :events, {}, :locals => STORE.get_all_events_for_year_and_month(year, month)
     end
-  #  haml :event
   end
 
   get '/event/:year/:month/:day' do |year, month, day|

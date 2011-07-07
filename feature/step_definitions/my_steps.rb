@@ -3,26 +3,22 @@ require 'rspec'
 Given /^i am on the homepage$/ do
   $browser.goto('www.google.com')
 end
-Given /^i make a (put|get) request (to|on) '(.*)' with a payload of$/ do |http_method, syntax_sugar, url, payload|
+Given /^i make a put request on '(.*)' with the following payload a '(\d+)' should be returned$/ do |url, http_response_code, payload|
   uri = URI.parse 'http://localhost:4567'
-  case http_method
-    when 'put'
-      http = Net::HTTP.new(uri.host, uri.port)
-      request = Net::HTTP::Put.new(url)
-      request.body = payload
-      response = http.request request
-      response.code.should == '200'
-  end
+
+  http = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Put.new(url)
+  request.body = payload
+  response = http.request request
+  response.code.should == http_response_code
 end
-When /^i make a (get|put) request on '(.*)'$/ do |http_method, url|
+When /^i make a get request on '(.*)' a '(\d+)' should be returned$/ do |url, http_response_code|
   uri = URI.parse 'http://localhost:4567'
   http = Net::HTTP.new(uri.host, uri.port)
-  case http_method
-    when 'get'
-      request = Net::HTTP::Get.new(url)
-      $last_response = http.request request
-      $last_response.code.should == '200'
-  end
+
+  request = Net::HTTP::Get.new(url)
+  $last_response = http.request request
+  $last_response.code.should == http_response_code
 end
 Then /^the page title should be '(.*)'$/ do |page_title|
   groups = $last_response.body.partition /<title>(.*)\<\/title\>/m
