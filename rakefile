@@ -1,13 +1,12 @@
 require 'bundler/setup'
 require "#{File.dirname(__FILE__)}/Testing/features/support/app_client"
-require "#{File.dirname(__FILE__)}/lib/configuration"
 require 'rake'
 
 ROOT_DIR = "#{File.dirname(__FILE__)}"
 
 namespace :local do
   task :start do
-    MyPetProject::AppClient.configure 'localhost:4567'
+    ENV['RACK_ENV'] = 'local'
     MyPetProject::AppClient.start
     include MyPetProject::AppClient
   end

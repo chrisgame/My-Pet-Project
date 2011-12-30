@@ -4,12 +4,6 @@ module MyPetProject
   end
   module AppClient
     class << self
-      attr_reader :base_url
-
-      def configure base_url
-        @base_url = base_url
-      end
-
       def start
         $my_pet_project_log_file = File.new("#{ROOT_DIR}/thin.log", 'a')
         `thin -R #{ROOT_DIR}/config.ru -e local start`
