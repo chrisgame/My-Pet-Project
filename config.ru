@@ -27,4 +27,4 @@ class MyPetProject < Sinatra::Base
 
 end
 
-MyPetProject.run!
+run MyPetProject

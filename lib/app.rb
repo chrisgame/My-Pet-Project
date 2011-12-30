@@ -39,5 +39,4 @@ class MyPetProject < Sinatra::Base
 
     "Stored event for #{year}#{month}#{day}"
   end
-  run! if app_file == $0
 end
