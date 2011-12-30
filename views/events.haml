@@ -11,7 +11,7 @@
     #menuContainer
     .articleBody
     #timelineContainer
-    %ol.events
+    %ol#eventList.events
       -locals.sort.collect do |key, value|
         %li.milestone
           -key.scan(/(....)(..)(..)/) do |group|

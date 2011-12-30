@@ -35,9 +35,7 @@ class MyPetProject < Sinatra::Base
   end
 
   put '/event/:year/:month/:day' do |year, month, day|
-    File.open("../store/#{year}#{month}#{day}.yaml", 'w') do |file|
-      file.write(request.body.read.to_s)
-    end
+    STORE.put_event(request.body.read.to_s, year, month, day)
 
     "Stored event for #{year}#{month}#{day}"
   end

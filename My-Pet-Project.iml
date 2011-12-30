@@ -3,7 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="RVM: ruby-1.9.2-p180 [my-pet-project] (1)" jdkType="RUBY_SDK" />
+    <orderEntry type="jdk" jdkName="RVM: ruby-1.9.2-p180 [my-pet-project]" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="archive-tar-minitar (v0.5.2, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="aws-s3 (v0.6.2, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />

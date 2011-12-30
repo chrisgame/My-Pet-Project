@@ -64,10 +64,3 @@ Feature: Events are able to created, deleted and searched for.
   |src|/store/images/photos/thumbs/2.jpg|
   |width|4567                                  |
   And the next element should be a p containing 'Paragraph 2 text'
-
-#  Scenario: when three put requests are made to the event url, two for the same month and one for another month, only the two from the same month should be returned when a get is made to the event url with the same year and month as the first two events
-#  Scenario: when two put requests are made to the event url for the same year both should be returned when a get is made to the event url with the year
-#  Scenario: when three put requests are made to the event url, two for the same year and one for another year, only the two from the same year should be returned when a get is made to the event url with the same year as the first two events
-#  Scenario: put requests made to the events url with no year should not succeed
-#  Scenario: put requests made to the events url with no month should not succeed
-#  Scenario: put requests made to the events url with no day should not succeed
