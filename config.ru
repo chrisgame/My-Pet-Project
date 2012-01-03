@@ -4,7 +4,7 @@ require 'pstore'
 require 'yaml/store'
 #require "sinatra/reloader"
 
-$0 = 'My-Pet-Project'
+$0 = 'My-Pet-Project-App'
 
 class MyPetProject < Sinatra::Base
 

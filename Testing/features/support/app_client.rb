@@ -10,11 +10,11 @@ module MyPetProject
       end
 
       def stop
-        kill_all 'My-Pet-Project'
+        kill_all 'My-Pet-Project-App'
       end
 
       def kill_all process_name
-        Process.kill(9, process_id(process_name))
+        Process.kill(9, process_id(process_name)) unless process_id(process_name) == 0
       end
 
       def process_id process_name
