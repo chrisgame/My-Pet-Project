@@ -22,6 +22,10 @@ class MyPetProject < Sinatra::Base
     STORE = EventStore::FileBasedStore.new
   end
 
+  configure(:debug) do
+    self.configure_app 'localhost:4567'
+  end
+
   configure(:local) do
     self.configure_app 'localhost:3000'
 #    register Sinatra::Reloader
