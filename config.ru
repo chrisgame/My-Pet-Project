@@ -1,5 +1,5 @@
-require './lib/app'
-require './lib/eventstore'
+require "#{File.dirname(__FILE__)}/lib/app"
+require "#{File.dirname(__FILE__)}/lib/eventstore"
 require 'pstore'
 require 'yaml/store'
 #require "sinatra/reloader"
@@ -23,7 +23,7 @@ class MyPetProject < Sinatra::Base
   end
 
   configure(:debug) do
-    self.configure_app 'localhost:4567'
+    self.configure_app 'localhost:3000'
   end
 
   configure(:local) do

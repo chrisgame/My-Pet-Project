@@ -4,4 +4,4 @@ gem "haml"
 gem "aws-s3"
 gem "heroku"
 gem "rake"
-
+gem "thin"

@@ -4,8 +4,7 @@ TESTING_DIR = "#{File.dirname(__FILE__)}/../../"
 TESTING_STORE_DIR = "#{TESTING_DIR}/features/support/store"
 ROOT_DIR = "#{TESTING_DIR}/.."
 ROOT_STORE_DIR = "#{ROOT_DIR}/store"
-#APP_BASE_URL = 'http://localhost:3000'
-APP_BASE_URL = 'http://localhost:4567'
+APP_BASE_URL = 'http://localhost:3000'
 
 def clear_down(path)
   FileUtils.rm_rf path if File.exists? path
