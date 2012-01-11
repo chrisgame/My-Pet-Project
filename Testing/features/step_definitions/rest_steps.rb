@@ -36,14 +36,14 @@ When /^the next element should be a (h1|p) containing '(.*)'$/ do |html_type, ex
   end
 end
 When /^the next element should be a (img) with the following attributes$/ do |tag_type, table|
-  # table is a |alt|Front and centre sections of the car loaded on the truck|
   case tag_type
     when 'img'
-      groups = $last_response.body.partition /^.*\<img(.*)\/\>/m
+      groups = $last_response.body.partition /^.*\<img(.*)\/\>.*/
       groups[1][/alt='(.*)' id.*/, 1].should == table.raw[0][1]
       groups[1][/id='(.*)' src.*/, 1].should == table.raw[1][1]
       groups[1][/src='(.*)' width.*/, 1].should == table.raw[2][1]
       groups[1][/width='(.*)'.*\/\>.*/, 1].should == table.raw[3][1]
+      $last_response.body = groups[2]
   end
 
 end
