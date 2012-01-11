@@ -9,6 +9,8 @@
     <orderEntry type="library" scope="PROVIDED" name="aws-s3 (v0.6.2, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.0.0, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.0.21, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="daemons (v1.1.5, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="eventmachine (v0.12.10, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="haml (v3.1.4, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="heroku (v2.17.0, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="launchy (v2.0.5, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
@@ -20,6 +22,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v0.9.5, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sinatra (v1.3.1, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="term-ansicolor (v1.0.7, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="thin (v1.3.1, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v1.3.3, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xml-simple (v1.1.1, RVM: ruby-1.9.2-p180 [my-pet-project]) [gem]" level="application" />
   </component>
