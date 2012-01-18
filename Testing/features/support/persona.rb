@@ -31,13 +31,14 @@ module TestingSupport
     end
 
     def browser
+      Dir.chdir("#{File.dirname(__FILE__)}/../../")
       @browser ||= Watir::Browser.new
     end
 
     def close_browser
       if @browser
         @browser.close
-        @browser.nil
+        @browser = nil
       end
     end
   end
