@@ -27,7 +27,7 @@ def create_event_and_store_in_persona persona, content_in_yaml, year, month, day
 end
 
 TestingSupport::Persona.all.each do |persona|
-  Given /^#{persona.first_name} creates an event for (\d+)\/(\d+)\/(\d+)/ do |year, month, day|
+  Given /^#{persona.first_name} creates an event for (\d+)\/(\d+)\/(\d+)/ do |day, month, year|
     create_event_and_store_in_persona persona, event1, year, month, day
   end
 

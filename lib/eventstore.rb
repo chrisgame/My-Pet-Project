@@ -16,9 +16,9 @@ module EventStore
       filenames = Dir.glob("*.yaml")
       data = Hash.new
       filenames.each do |filename|
-        filename.scan(/(..)(..)(....)/) do |group|
-          @day = group[0]
-          @key = "#{Date::MONTHNAMES[group[1].to_i].capitalize} #{group[2]}"
+        filename.scan(/(....)(..)(..)/) do |group|
+          @day = group[2]
+          @key = "#{Date::MONTHNAMES[group[1].to_i].capitalize} #{group[0]}"
         end
 
         data.store @key, [:title => YAML::load(File.read(filename))[:body]['h1_1'], :day => @day]
