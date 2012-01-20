@@ -11,6 +11,21 @@ module EventStore
       @store_path = Dir.pwd
     end
 
+    def get_timeline
+      Dir.chdir(@store_path)
+      filenames = Dir.glob("*.yaml")
+      data = Hash.new
+      filenames.each do |filename|
+        filename.scan(/(..)(..)(....)/) do |group|
+          @day = group[0]
+          @key = "#{Date::MONTHNAMES[group[1].to_i].capitalize} #{group[2]}"
+        end
+
+        data.store @key, [:title => YAML::load(File.read(filename))[:body]['h1_1'], :day => @day]
+      end
+      data
+    end
+
     def get_all_events_for_year year
       Dir.chdir(@store_path)
       filenames = Dir.glob("#{year}*")

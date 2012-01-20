@@ -12,19 +12,33 @@ event2 = <<event2
   h1_1: Event 2
 event2
 
+def create_event(content_in_yaml, url)
+  uri = URI.parse APP_BASE_URL
+  http = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Put.new(url)
+  request.body = content_in_yaml
+  response = http.request request
+  response.code.should == '200'
+end
+
+def create_event_and_store_in_persona persona, content_in_yaml, year, month, day
+  create_event content_in_yaml, "/event/#{year}/#{month}/#{day}"
+  persona.store.put_event content_in_yaml, year, month, day
+end
+
 TestingSupport::Persona.all.each do |persona|
+  Given /^#{persona.first_name} creates an event for (\d+)\/(\d+)\/(\d+)/ do |year, month, day|
+    create_event_and_store_in_persona persona, event1, year, month, day
+  end
+
   Given /^#{persona.first_name} creates two events for the month of (.*)$/ do |month|
-  create_event event1,"/event/1999/#{Date::MONTHNAMES.index(month)}/01"
-  persona.store.put_event event1, '1999', Date::MONTHNAMES.index(month), '01'
-  create_event event2,"/event/1999/#{Date::MONTHNAMES.index(month)}/02"
-  persona.store.put_event event2, '1999', Date::MONTHNAMES.index(month), '02'
+    create_event_and_store_in_persona persona, event1, 1999, month, '01'
+    create_event_and_store_in_persona persona, event2, 1999, month, '02'
   end
 
   Given /^#{persona.first_name} creates two events for the year of (\d+)$/ do |year|
-    create_event event1,"/event/#{year}/01/01"
-    persona.store.put_event event1, year, '01', '01'
-    create_event event2,"/event/#{year}/01/02"
-    persona.store.put_event event2, year, '01', '02'
+    create_event_and_store_in_persona persona, event1, year, '01', '01'
+    create_event_and_store_in_persona persona, event2, year, '01', '02'
   end
 
   When /^#{persona.first_name} requests events in the month of (.*)$/ do |month|
@@ -40,7 +54,7 @@ TestingSupport::Persona.all.each do |persona|
     end
 
     actual_h1s= []
-    persona.browser.h1s.each{|h1| actual_h1s << h1.text}
+    persona.browser.h1s.each { |h1| actual_h1s << h1.text }
 
     actual_h1s.should =~ expected_h1s.flatten
   end
@@ -58,17 +72,24 @@ TestingSupport::Persona.all.each do |persona|
     end
 
     actual_h1s= []
-    persona.browser.h1s.each{|h1| actual_h1s << h1.text}
+    persona.browser.h1s.each { |h1| actual_h1s << h1.text }
 
     actual_h1s.should =~ expected_h1s.flatten
   end
-end
 
-def create_event(content_in_yaml, url)
-  uri = URI.parse APP_BASE_URL
-  http = Net::HTTP.new(uri.host, uri.port)
-  request = Net::HTTP::Put.new(url)
-  request.body = content_in_yaml
-  response = http.request request
-  response.code.should == '200'
+  When /^#{persona.first_name} should see the (event|events) created in the timeline$/ do |unused|
+    persona.browser.goto "#{APP_BASE_URL}/timeline"
+
+    expected_titles = []
+    persona.store.get_timeline.each do |month_and_year, days|
+      days.each do |day|
+        expected_titles << day[:title]
+      end
+    end
+
+    actual_titles= []
+    persona.browser.elements(:class => 'tl-msg-inside').each { |title| actual_titles << title.text }
+
+    actual_titles.should =~ expected_titles.flatten
+  end
 end

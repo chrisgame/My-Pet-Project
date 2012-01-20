@@ -11,7 +11,7 @@ class MyPetProject < Sinatra::Base
   end
 
   get '/timeline' do
-    haml :timeline
+    haml :timeline, {}, :locals => STORE.get_timeline
   end
 
   get '/menu' do
