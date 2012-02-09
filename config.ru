@@ -35,11 +35,13 @@ class MyPetProject < Sinatra::Base
   configure(:staging) do
     self.configure_app 'http://simple-mountain-4376.herokuapp.com/'
     STORE = EventStore::S3Store.new
+    require 'newrelic_rpm'
   end
 
   configure(:production) do
     self.configure_app 'http://empty-frost-9387.herokuapp.com/'
     STORE = EventStore::S3Store.new
+    require 'newrelic_rpm'
   end
 
 end
