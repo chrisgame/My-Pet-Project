@@ -1,19 +1,19 @@
- ---
- staging:
-   error_collector:
-     capture_source: true
-     enabled: true
-     ignore_errors: ActionController::RoutingError
-   apdex_t: 0.5
-   ssl: false
-   monitor_mode: true
-   license_key: 48b54cb9ebdc03255ca83ca5fd7a2cef9425cdd6
-   developer_mode: false
-   app_name: simple-mountain-4376
-   transaction_tracer:
-     record_sql: obfuscated
-     enabled: true
-     stack_trace_threshold: 0.5
-     transaction_threshold: apdex_f
-   capture_params: false
-   log_level: info
+---
+staging:
+  error_collector:
+    capture_source: true
+    enabled: true
+    ignore_errors: ActionController::RoutingError
+  apdex_t: 0.5
+  ssl: false
+  monitor_mode: true
+  license_key: 48b54cb9ebdc03255ca83ca5fd7a2cef9425cdd6
+  developer_mode: false
+  app_name: simple-mountain-4376
+  transaction_tracer:
+    record_sql: obfuscated
+    enabled: true
+    stack_trace_threshold: 0.5
+    transaction_threshold: apdex_f
+  capture_params: false
+  log_level: info
