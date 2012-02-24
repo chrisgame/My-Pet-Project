@@ -15,12 +15,8 @@ Feature: Users can manipulate the url to request subsets of events
   Scenario: When a request is made for events that only contains a month and a day the user should be prompted to use the year month day format
     Given Joe requests events from october 3rd
     Then Joe should see a message that states 'Events may be requested by year, year and month or year month day'
-#
-#  Scenario: When a request is made for events that only contains a year and a day the user should be prompted to use the year month day format
-#    Given Joe requests events from 1999 on the 3rd
-#    Then Joe should see a message that states 'Events may be requested by year, year and month or year month day'
-#
-#  Scenario: When a request is made for events that only contains a year and a month the user should be prompted to use the year month day format
-#    Given Joe requests events from october 1999
-#    Then Joe should see a message that states 'Events may be requested by year, year and month or year month day'
+
+  Scenario: When a request is made for events that only contains a year and a day the user should be prompted to use the year month day format
+    Given Joe requests events from 1999 on the 3rd
+    Then Joe should see a message that states 'Events may be requested by year, year and month or year month day'
 

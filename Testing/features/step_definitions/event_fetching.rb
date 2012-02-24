@@ -7,7 +7,11 @@ TestingSupport::Persona.all.each do |persona|
     persona.browser.goto "#{APP_BASE_URL}/event/#{year}"
   end
 
-  Given /^#{persona.first_name} requests events from (.*) (\d+)/ do |month, day|
+  Given /^#{persona.first_name} requests events from (\d+) on the (\d+)(st|nd|rd|th)$/ do |year, day, sugar|
+    persona.browser.goto "#{APP_BASE_URL}/event/#{year}/#{day}"
+  end
+
+  Given /^#{persona.first_name} requests events from (.*) (\d+)(st|nd|rd|th)$/ do |month, day, sugar|
     persona.browser.goto "#{APP_BASE_URL}/event/#{month}/#{day}"
   end
 end
