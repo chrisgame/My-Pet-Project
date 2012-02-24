@@ -12,9 +12,9 @@ Feature: Users can manipulate the url to request subsets of events
     When Joe requests events in the year of 1999
     Then Joe should be returned only the two events created in the year 1999
 
-#  Scenario: When a request is made for events that only contains a month and a day the user should be prompted to use the year month day format
-#    Given Joe requests events from october 3rd
-#    Then Joe should see a message that states 'Events may be requested by year, year and month or year month day'
+  Scenario: When a request is made for events that only contains a month and a day the user should be prompted to use the year month day format
+    Given Joe requests events from october 3rd
+    Then Joe should see a message that states 'Events may be requested by year, year and month or year month day'
 #
 #  Scenario: When a request is made for events that only contains a year and a day the user should be prompted to use the year month day format
 #    Given Joe requests events from 1999 on the 3rd

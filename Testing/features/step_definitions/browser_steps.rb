@@ -41,9 +41,7 @@ TestingSupport::Persona.all.each do |persona|
     create_event_and_store_in_persona persona, event2, year, '01', '02'
   end
 
-  When /^#{persona.first_name} requests events in the month of (.*)$/ do |month|
-    persona.browser.goto "#{APP_BASE_URL}/event/1999/#{Date::MONTHNAMES.index(month)}"
-  end
+
 
   Then /^#{persona.first_name} should be returned only the two events created for the month of (.*)$/ do |month|
     persona.browser.title.should == "The events of #{month} 1999"
@@ -57,10 +55,6 @@ TestingSupport::Persona.all.each do |persona|
     persona.browser.h1s.each { |h1| actual_h1s << h1.text }
 
     actual_h1s.should =~ expected_h1s.flatten
-  end
-
-  When /^#{persona.first_name} requests events in the year of (\d+)$/ do |year|
-    persona.browser.goto "#{APP_BASE_URL}/event/#{year}"
   end
 
   Then /^#{persona.first_name} should be returned only the two events created in the year (\d+)$/ do |year|
@@ -107,5 +101,9 @@ TestingSupport::Persona.all.each do |persona|
 
   Then /^#{persona.first_name} should be taken to the article for the event on (\d+)\/(\d+)\/(\d+)/ do |day, month, year|
     persona.browser.title.should == persona.store.get_event_on_year_month_and_day(year, month, day)[:pageTitle]
+  end
+
+  Then /^#{persona.first_name} should see a message that states '(.*)'$/ do |message|
+    persona.browser.text.should =~ /#{message}/
   end
 end

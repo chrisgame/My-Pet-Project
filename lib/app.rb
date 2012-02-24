@@ -24,7 +24,7 @@ class MyPetProject < Sinatra::Base
 
   get '/event/:year/:month' do |year, month|
     if month > 12.to_s
-      "There are only twelve months"
+      "Events may be requested by year, year and month or year month day"
     else
      haml :events, {}, :locals => STORE.get_all_events_for_year_and_month(year, month)
     end
