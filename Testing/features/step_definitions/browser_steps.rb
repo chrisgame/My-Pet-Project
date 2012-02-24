@@ -92,4 +92,20 @@ TestingSupport::Persona.all.each do |persona|
 
     actual_titles.should =~ expected_titles.flatten
   end
+
+  When /^#{persona.first_name} clicks on the title for the event on (\d+)\/(\d+)\/(\d+)/ do |day, month, year|
+    persona.browser.elements(:css => 'li#event-first-test-month.milestone a').each do |a|
+      if a.attribute_value(:href) == "#{APP_BASE_URL}/event/#{year}/#{month}/#{day}"
+        a.click
+      end
+    end
+  end
+
+  When /^#{persona.first_name} is on the timeline page$/ do
+    persona.browser.goto "#{APP_BASE_URL}/timeline"
+  end
+
+  Then /^#{persona.first_name} should be taken to the article for the event on (\d+)\/(\d+)\/(\d+)/ do |day, month, year|
+    persona.browser.title.should == persona.store.get_event_on_year_month_and_day(year, month, day)[:pageTitle]
+  end
 end

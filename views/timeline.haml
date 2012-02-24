@@ -11,7 +11,7 @@
           %ul.column
             -days.each do |day|
               %li#event-first-test-month.milestone
-                %a{:hidefocus => "", :href => "first-test-month"}
+                %a{:hidefocus => "", :href => day[:link]}
                   %span{:class =>".tl-icon", :title => "Milestomes"}
                     %span.tl-msg
                       %span.tl-msg-inside

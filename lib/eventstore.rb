@@ -18,10 +18,12 @@ module EventStore
       filenames.each do |filename|
         filename.scan(/(....)(..)(..)/) do |group|
           @day = group[2]
-          @key = "#{Date::MONTHNAMES[group[1].to_i].capitalize} #{group[0]}"
+          @month = group[1]
+          @year = group[0]
+          @key = "#{Date::MONTHNAMES[@month.to_i].capitalize} #{@year}"
         end
 
-        data.store @key, [:title => YAML::load(File.read(filename))[:body]['h1_1'], :day => @day]
+        data.store @key, [:title => YAML::load(File.read(filename))[:body]['h1_1'], :day => @day, :link => "/event/#{@year}/#{@month}/#{@day}"]
       end
       data
     end
@@ -40,6 +42,11 @@ module EventStore
       data = Hash.new
       filenames.each { |filename| data.store "#{filename.gsub(/.yaml/, '')}", YAML::load(File.read(filename)) }
       data
+    end
+
+    def get_event_on_year_month_and_day year, month, day
+      Dir.chdir(@store_path)
+      YAML::load(File.read("#{year}#{month}#{day}.yaml"))
     end
 
     def put_event(body, year, month, day)
