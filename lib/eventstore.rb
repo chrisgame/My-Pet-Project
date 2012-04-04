@@ -1,10 +1,10 @@
 module EventStore
-  class FileBasedStore
+  class FileBasedEventStore
 
     attr_accessor :store_path
 
     def initialize &block
-      Dir.chdir("#{File.dirname(__FILE__)}/../")
+      Dir.chdir("#{File.dirname(__FILE__)}/../public")
       yield if block_given?
       Dir.mkdir("store") unless File.directory?("store")
       Dir.chdir("store")
@@ -55,7 +55,7 @@ module EventStore
       end
     end
   end
-  class S3Store
+  class S3EventStore
     AWS_ACCESS_KEY = 'AKIAI3HDDHE7NJ2HWRQA'
     AWS_SECRET_ACCESS_KEY = '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'
     AWS_BUCKET = 'gt40.freakypenguin'

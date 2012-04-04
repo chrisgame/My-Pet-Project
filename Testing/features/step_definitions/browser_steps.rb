@@ -32,8 +32,8 @@ TestingSupport::Persona.all.each do |persona|
   end
 
   Given /^#{persona.first_name} creates two events for the month of (.*)$/ do |month|
-    create_event_and_store_in_persona persona, event1, 1999, month, '01'
-    create_event_and_store_in_persona persona, event2, 1999, month, '02'
+    create_event_and_store_in_persona persona, event1, 1999, Date::MONTHNAMES.index(month), '01'
+    create_event_and_store_in_persona persona, event2, 1999, Date::MONTHNAMES.index(month), '02'
   end
 
   Given /^#{persona.first_name} creates two events for the year of (\d+)$/ do |year|
@@ -105,5 +105,9 @@ TestingSupport::Persona.all.each do |persona|
 
   Then /^#{persona.first_name} should see a message that states '(.*)'$/ do |message|
     persona.browser.text.should =~ /#{message}/
+  end
+
+  When /^#{persona.first_name} goes to '(.*)' the same image asset should be displayed$/ do |url|
+    persona.browser.goto "#{APP_BASE_URL}#{url}"
   end
 end

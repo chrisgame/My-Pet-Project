@@ -25,7 +25,7 @@ module TestingSupport
     end
 
     def store
-      @store ||= EventStore::FileBasedStore.new do |store|
+      @store ||= EventStore::FileBasedEventStore.new do |store|
         Dir.chdir File.dirname(__FILE__)
       end
     end

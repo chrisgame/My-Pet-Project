@@ -1,9 +1,3 @@
-require 'rubygems'
-require 'bundler/setup'
-require 'haml'
-require 'sinatra'
-require 'yaml'
-
 class MyPetProject < Sinatra::Base
 
   get '/' do
@@ -11,32 +5,10 @@ class MyPetProject < Sinatra::Base
   end
 
   get '/timeline' do
-    haml :timeline, {}, :locals => STORE.get_timeline
+    haml :timeline, {}, :locals => EVENT_STORE.get_timeline
   end
 
   get '/menu' do
     haml :menu
-  end
-
-  get '/event/:year' do |year|
-    haml :events, {}, :locals => STORE.get_all_events_for_year(year)
-  end
-
-  get '/event/:year/:month' do |year, month|
-    if month > 12.to_s
-      "Events may be requested by year, year and month or year month day"
-    else
-     haml :events, {}, :locals => STORE.get_all_events_for_year_and_month(year, month)
-    end
-  end
-
-  get '/event/:year/:month/:day' do |year, month, day|
-      haml:event, {}, :locals => YAML::load(File.read("../store/#{year}#{month}#{day}.yaml"))
-  end
-
-  put '/event/:year/:month/:day' do |year, month, day|
-    STORE.put_event(request.body.read.to_s, year, month, day)
-
-    "Stored event for #{year}#{month}#{day}"
   end
 end

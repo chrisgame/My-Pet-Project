@@ -64,3 +64,5 @@ Feature: Events are able to created, deleted and searched for.
   |src|/store/images/photos/thumbs/2.jpg|
   |width|4567                                  |
   And the next element should be a p containing 'Paragraph 2 text'
+
+  Scenario: When i put two events that occured on the same day the second should overide the first

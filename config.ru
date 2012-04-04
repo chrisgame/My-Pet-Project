@@ -1,8 +1,14 @@
-require "#{File.dirname(__FILE__)}/lib/app"
-require "#{File.dirname(__FILE__)}/lib/eventstore"
+require 'rubygems'
+require 'haml'
+require 'sinatra'
+require 'yaml'
 require 'pstore'
 require 'yaml/store'
-#require "sinatra/reloader"
+require "#{File.dirname(__FILE__)}/lib/app"
+require "#{File.dirname(__FILE__)}/lib/events"
+require "#{File.dirname(__FILE__)}/lib/assets"
+require "#{File.dirname(__FILE__)}/lib/eventstore"
+require "#{File.dirname(__FILE__)}/lib/assetstore"
 
 $0 = 'My-Pet-Project-App'
 
@@ -19,7 +25,8 @@ class MyPetProject < Sinatra::Base
   configure do
     set :public_folder, "#{Dir.pwd}/public"
     set :views, File.dirname(__FILE__) + "/views"
-    STORE = EventStore::FileBasedStore.new
+    EVENT_STORE = EventStore::FileBasedEventStore.new
+    ASSET_STORE = AssetStore::FileBasedAssetStore.new
   end
 
   configure(:debug) do
@@ -27,20 +34,20 @@ class MyPetProject < Sinatra::Base
   end
 
   configure(:local) do
-    self.configure_app 'localhost:3000'
+      self.configure_app 'localhost:3000'
 #    register Sinatra::Reloader
 #    also_reload File.dirname(__FILE__) + "/views"
   end
 
   configure(:staging) do
     self.configure_app 'http://simple-mountain-4376.herokuapp.com/'
-    STORE = EventStore::S3Store.new
+    EVENT_STORE = EventStore::S3EventStore.new
     require 'newrelic_rpm'
   end
 
   configure(:production) do
     self.configure_app 'http://empty-frost-9387.herokuapp.com/'
-    STORE = EventStore::S3Store.new
+    EVENT_STORE = EventStore::S3EventStore.new
     require 'newrelic_rpm'
   end
 

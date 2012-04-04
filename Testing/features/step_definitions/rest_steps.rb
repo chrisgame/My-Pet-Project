@@ -51,17 +51,32 @@ Given /^a put request is made on '(.*)' with an image asset a response code of '
   uri = URI.parse APP_BASE_URL
   http = Net::HTTP.new(uri.host, uri.port)
 
-  data = File.read "#{File.dirname(__FILE__)}/../support/assets/test.jpeg"
+  data = File.open("#{File.dirname(__FILE__)}/../support/assets/test.jpeg", 'rb') {|file| file.read}
 
-  response, body = http.put(path, data, {'Content-type' => 'image/jpeg'})
+  response = http.put(path, data, {'Content-type' => 'image/jpeg', :enctype => 'multipart/form-data'})
 
   response.code.should == response_code
 end
 When /^a get request is made on the store with the following '(.*)' the same image asset should be returned with a response code of '(.*)'$/ do |path, response_code|
-  uri = URI.parse @STORE_BASE_URL
+  uri = URI.parse APP_BASE_URL
   http = Net::HTTP.new(uri.host, uri.port)
 
   response, body = http.get(path)
 
   response.code.should == response_code
+end
+Given /^a post request is made on '(.*)' with an image asset with a filename of '(.*)' a response code of '(.*)' should be returned$/ do  |path, filename, response_code|
+  require 'net/http/post/multipart'
+
+  url = URI.parse "#{APP_BASE_URL}#{path}"
+  File.open("#{File.dirname(__FILE__)}/../support/assets/#{filename}") do |jpg|
+    request = Net::HTTP::Post::Multipart.new url.path,
+      "file" => UploadIO.new(jpg, "image/jpeg", "#{filename}")
+
+    @response = Net::HTTP.start(url.host, url.port) do |http|
+      http.request(request)
+    end
+  end
+
+  @response.code.should == response_code
 end
