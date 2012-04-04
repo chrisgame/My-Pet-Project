@@ -65,4 +65,37 @@ Feature: Events are able to created, deleted and searched for.
   |width|4567                                  |
   And the next element should be a p containing 'Paragraph 2 text'
 
-  Scenario: When i put two events that occured on the same day the second should overide the first
+  Scenario: When i put two events that occured on the same day the second should override the first
+    Given i make a put request on '/event/1999/01/01' with the following payload a '200' should be returned
+"""
+:pageTitle: The First Test Page Title
+:body:
+  h1_1: Heading 1
+  image_1:
+    :src: "/store/images/photos/thumbs/DSCF0107.jpg"
+    :alt: Image 1 alt tag
+    :id: Image id
+    :width: 1024
+  p_1: "Paragraph 1 text"
+"""
+    And i make a put request on '/event/1999/01/01' with the following payload a '200' should be returned
+"""
+:pageTitle: The Second Test Page Title
+:body:
+  h1_1: Heading 1 b
+  image_1:
+    :src: "/store/images/photos/thumbs/DSCF0107.jpg"
+    :alt: Image 1 b alt tag
+    :id: Image id b
+    :width: 1024
+  p_1: "Paragraph 1 b text"
+"""
+    And i make a get request on '/event/1999/01/01' a '200' should be returned
+    Then the page title should be 'The Second Test Page Title'
+    And the next element should be a h1 containing 'Heading 1 b'
+    And the next element should be a img with the following attributes
+    |alt|Image 1 b alt tag|
+    |id |Image id b                                            |
+    |src|/store/images/photos/thumbs/DSCF0107.jpg|
+    |width|1024                                                  |
+    And the next element should be a p containing 'Paragraph 1 b text'
