@@ -12,13 +12,23 @@ module AssetStore
     end
 
     def save(tempfile, name)
-      Dir.chdir("#{File.dirname(__FILE__)}/../public/")
-      Dir.chdir("store")
+      Dir.chdir(@store_path)
       File.open(File.join(Dir.pwd, "/", name), "wb") {|file| file.write(tempfile.read) }
     end
 
     def get_path_for_image_with_filename_of filename
       "../store/#{filename}"
+    end
+
+    def get_all_assets
+      Dir.chdir(@store_path)
+      assets = []
+      Dir.foreach(@store_path){|filename| assets << "store/#{filename}" unless unsupported filename}
+      assets
+    end
+
+    def unsupported filename
+      ['.', '..'].include? filename
     end
   end
 

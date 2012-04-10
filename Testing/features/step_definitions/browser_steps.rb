@@ -23,7 +23,7 @@ end
 
 def create_event_and_store_in_persona persona, content_in_yaml, year, month, day
   create_event content_in_yaml, "/event/#{year}/#{month}/#{day}"
-  persona.store.put_event content_in_yaml, year, month, day
+  persona.event_store.put_event content_in_yaml, year, month, day
 end
 
 TestingSupport::Persona.all.each do |persona|
@@ -47,7 +47,7 @@ TestingSupport::Persona.all.each do |persona|
     persona.browser.title.should == "The events of #{month} 1999"
 
     expected_h1s = []
-    persona.store.get_all_events_for_year_and_month('1999', '10').select do |key, value|
+    persona.event_store.get_all_events_for_year_and_month('1999', '10').select do |key, value|
       expected_h1s << value[:body].values_at('h1_1')
     end
 
@@ -61,7 +61,7 @@ TestingSupport::Persona.all.each do |persona|
     persona.browser.title.should == "The events of #{year}"
 
     expected_h1s = []
-    persona.store.get_all_events_for_year('1999').select do |key, value|
+    persona.event_store.get_all_events_for_year('1999').select do |key, value|
       expected_h1s << value[:body].values_at('h1_1')
     end
 
@@ -75,7 +75,7 @@ TestingSupport::Persona.all.each do |persona|
     persona.browser.goto "#{APP_BASE_URL}/timeline"
 
     expected_titles = []
-    persona.store.get_timeline.each do |month_and_year, days|
+    persona.event_store.get_timeline.each do |month_and_year, days|
       days.each do |day|
         expected_titles << day[:title]
       end
@@ -100,7 +100,7 @@ TestingSupport::Persona.all.each do |persona|
   end
 
   Then /^#{persona.first_name} should be taken to the article for the event on (\d+)\/(\d+)\/(\d+)/ do |day, month, year|
-    persona.browser.title.should == persona.store.get_event_on_year_month_and_day(year, month, day)[:pageTitle]
+    persona.browser.title.should == persona.event_store.get_event_on_year_month_and_day(year, month, day)[:pageTitle]
   end
 
   Then /^#{persona.first_name} should see a message that states '(.*)'$/ do |message|
@@ -109,5 +109,29 @@ TestingSupport::Persona.all.each do |persona|
 
   When /^#{persona.first_name} goes to '(.*)' the same image asset should be displayed$/ do |url|
     persona.browser.goto "#{APP_BASE_URL}#{url}"
+    #TODO Take screenshot here
+  end
+
+  Given /^#{persona.first_name} uploads an image asset with a filename of '(.*)'$/ do |filename|
+    persona.browser.goto "#{APP_BASE_URL}/upload"
+    persona.browser.file_field.set "#{File.dirname(__FILE__)}/../support/assets/#{filename}"
+    persona.browser.button(:name => 'upload').click
+    persona.browser.text.should == 'Correct!'
+
+    persona.asset_store.save File.open("#{File.dirname(__FILE__)}/../support/assets/#{filename}", "rb"), filename
+  end
+
+  When /^#{persona.first_name} goes to '(.*)'$/ do |url|
+    persona.browser.goto "#{APP_BASE_URL}#{url}"
+  end
+
+  Then /^#{persona.first_name} should see only the assets he uploaded earlier$/ do
+    expected_assets = persona.asset_store.get_all_assets.collect{|relative_asset_path| "#{APP_BASE_URL}/#{relative_asset_path}"}
+
+    actual_images = []
+    persona.browser.imgs.each{|img| actual_images << img.src}
+
+    actual_images.should == expected_assets
+    #TODO Take screenshot here
   end
 end

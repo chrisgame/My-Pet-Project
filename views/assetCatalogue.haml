@@ -1,0 +1,10 @@
+%html
+  %link{:rel => 'stylesheet', :href => '/css/assetCatalogue.css', :type => 'text/css', :media => 'screen'}
+  %script{:src => '/js/jquery-1.4.4.min.js', :type => 'text/javascript'}
+  %head
+    %title="Asset Catalogue"
+  %body
+    %ul
+    -ASSET_STORE.get_all_assets.each do |filename|
+      %li
+        %img{:src=>filename}

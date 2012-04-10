@@ -17,6 +17,10 @@ class MyPetProject < Sinatra::Base
 
     haml :singleImage
   end
+
+  get '/asset-catalogue' do
+    haml :assetCatalogue
+  end
 end
 
 

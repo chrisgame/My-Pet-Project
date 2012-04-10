@@ -1,5 +1,6 @@
 require 'ostruct'
 load "#{File.dirname(__FILE__)}/../../../lib/eventstore.rb"
+load "#{File.dirname(__FILE__)}/../../../lib/assetstore.rb"
 
 module TestingSupport
   class Persona < OpenStruct
@@ -24,8 +25,14 @@ module TestingSupport
       Persona << self
     end
 
-    def store
-      @store ||= EventStore::FileBasedEventStore.new do |store|
+    def event_store
+      @event_store ||= EventStore::FileBasedEventStore.new do |store|
+        Dir.chdir File.dirname(__FILE__)
+      end
+    end
+
+    def asset_store
+      @asset_store ||= AssetStore::FileBasedAssetStore.new do |store|
         Dir.chdir File.dirname(__FILE__)
       end
     end
