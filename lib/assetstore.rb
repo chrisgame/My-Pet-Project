@@ -17,6 +17,7 @@ module AssetStore
     end
 
     def get_path_for_image_with_filename_of filename
+      Dir.chdir(@store_path)
       "../store/#{filename}"
     end
 

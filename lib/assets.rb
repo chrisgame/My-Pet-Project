@@ -15,11 +15,15 @@ class MyPetProject < Sinatra::Base
   get '/images/:filename' do |filename|
     ASSET_STORE.get_path_for_image_with_filename_of filename
 
-    haml :singleImage
+    haml :single_image
   end
 
   get '/asset-catalogue' do
-    haml :assetCatalogue
+    haml :asset_catalogue
+  end
+
+  get '/asset-timetable' do
+    haml :asset_timetable
   end
 end
 

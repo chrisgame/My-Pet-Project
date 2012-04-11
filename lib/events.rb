@@ -7,12 +7,13 @@ class MyPetProject < Sinatra::Base
     if month > 12.to_s
       "Events may be requested by year, year and month or year month day"
     else
+     @page_title = "The events of #{Date::MONTHNAMES[params['month'].to_i]} #{params['year']}"
      haml :events, {}, :locals => EVENT_STORE.get_all_events_for_year_and_month(year, month)
     end
   end
 
   get '/event/:year/:month/:day' do |year, month, day|
-      haml:event, {}, :locals => YAML::load(File.read("../store/#{year}#{month}#{day}.yaml"))
+    haml:event, {}, :locals => YAML::load(File.read("../store/#{year}#{month}#{day}.yaml"))
   end
 
   put '/event/:year/:month/:day' do |year, month, day|

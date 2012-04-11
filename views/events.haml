@@ -1,27 +1,18 @@
-%html
-  %link{:rel => 'stylesheet', :href => '/css/event.css', :type => 'text/css', :media => 'screen'}
-  %link{:rel => 'stylesheet', :href => '/css/events.css', :type => 'text/css', :media => 'screen'}
-  %link{:rel => 'stylesheet', :href => '/css/menu.css', :type => 'text/css', :media => 'screen'}
-  %link{:rel => 'stylesheet', :href => '/css/timeline.css', :type => 'text/css', :media => 'screen'}
-  %script{:src => '/js/jquery-1.4.4.min.js', :type => 'text/javascript'}
-  %script{:src => '/js/event.js', :type => 'text/javascript'}
-  %head
-    %title The events of #{Date::MONTHNAMES[params['month'].to_i]} #{params['year']}
-  %body
-    #menuContainer
-    .articleBody
-    #timelineContainer
-    %ol#eventList.events
-      -locals.sort.collect do |key, value|
-        %li.milestone
-          -key.scan(/(....)(..)(..)/) do |group|
-            %a #{group[2]}-#{Date::MONTHNAMES[group[1].to_i]}-#{group[0]}  -   #{value[:pageTitle]}
-            .articleContent
-              -value[:body].each do |key, value|
-                -case key
-                -when /h1(.*)/
-                  %h1=value
-                -when /p(.*)/
-                  %p=value
-                -when /image(.*)/
-                  %img{:src => value[:src], :alt => value[:alt], :id => value[:id], :width => value[:width]}
+-@page_title = "The events of #{Date::MONTHNAMES[params['month'].to_i]} #{params['year']}"
+%body
+  =haml :menu
+  =haml :timeline
+  %ol#eventList.events
+    -locals.sort.collect do |key, value|
+      %li.milestone
+        -key.scan(/(....)(..)(..)/) do |group|
+          %a #{group[2]}-#{Date::MONTHNAMES[group[1].to_i]}-#{group[0]}  -   #{value[:pageTitle]}
+          .articleContent
+            -value[:body].each do |key, value|
+              -case key
+              -when /h1(.*)/
+                %h1=value
+              -when /p(.*)/
+                %p=value
+              -when /image(.*)/
+                %img{:src => value[:src], :alt => value[:alt], :id => value[:id], :width => value[:width]}

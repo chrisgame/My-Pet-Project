@@ -1,35 +1,14 @@
-%html
-  %script{:src => "/js/timeline.js", :type => "text/javascript"}
-  %link{:rel => "stylesheet", :href => "/css/timeline.css", :type => "text/css", :media => "screen"}
-  %h2 My Tornado GT40 Build Timeline
-  #timeline{:style => "overflow : hidden;"}
-    %ul.tl-events
-      -locals.each do |month_and_year, days|
-        %li.first
-          %h3
-            =month_and_year
-          %ul.column
-            -days.each do |day|
-              %li#event-first-test-month.milestone
-                %a{:hidefocus => "", :href => day[:link]}
-                  %span{:class =>".tl-icon", :title => "Milestomes"}
-                    %span.tl-msg
-                      %span.tl-msg-inside
-                        =day[:title]
-
-
-
-      -#%li.first
-      -#  %h3 Second Test Month First Event
-      -#  %ul.column
-      -#    %li#event-second-test-month-first-event.milestone
-      -#      %a{:hidefocus => "", :href => "second-test-month-first-event"}
-      -#        %span{:class =>".tl-icon", :title => "Milestomes"}
-      -#          %span.tl-msg
-      -#            %span.tl-msg-inside Second Test Month First Event
-      -#    %li#event-second-test-month-second-event.milestone
-      -#      %a{:hidefocus => "", :href => "second-test-month-second-event"}
-      -#        %span{:class =>".tl-icon", :title => "Milestomes"}
-      -#          %span.tl-msg
-      -#            %span.tl-msg-inside Second Test Month Second Event
-
+#timeline{:style => "overflow : hidden;"}
+  %ul.tl-events
+    -EVENT_STORE.get_timeline.each do |month_and_year, days|
+      %li.first
+        %h3
+          =month_and_year
+        %ul.column
+          -days.each do |day|
+            %li#event-first-test-month.milestone
+              %a{:hidefocus => "", :href => day[:link]}
+                %span{:class =>".tl-icon", :title => "Milestomes"}
+                  %span.tl-msg
+                    %span.tl-msg-inside
+                      =day[:title]

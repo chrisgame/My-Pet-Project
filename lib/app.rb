@@ -1,11 +1,14 @@
 class MyPetProject < Sinatra::Base
 
   get '/' do
-      haml :index
+    @page_title = 'Tornado TS40 GT40 Kit Car Build'
+
+    haml :index
   end
 
   get '/timeline' do
-    haml :timeline, {}, :locals => EVENT_STORE.get_timeline
+    @page_title = 'Tornado TS40 GT40 Kit Car Build'
+    haml :standalone_timeline
   end
 
   get '/menu' do

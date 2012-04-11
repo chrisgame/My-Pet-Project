@@ -1,0 +1,5 @@
+%body
+  %ul
+  -ASSET_STORE.get_all_assets.each do |filename|
+    %li
+      %img{:src=>filename}
