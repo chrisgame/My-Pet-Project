@@ -1,9 +1,13 @@
 require 'rubygems'
 require 'haml'
 require 'sinatra'
+require "sinatra/reloader"
 require 'yaml'
 require 'pstore'
 require 'yaml/store'
+require 'exifr'
+require 'open3'
+require 'time'
 require "#{File.dirname(__FILE__)}/lib/app"
 require "#{File.dirname(__FILE__)}/lib/events"
 require "#{File.dirname(__FILE__)}/lib/assets"
@@ -33,10 +37,11 @@ class MyPetProject < Sinatra::Base
     self.configure_app 'localhost:3000'
   end
 
-  configure(:local) do
+  configure(:development) do
       self.configure_app 'localhost:3000'
-#    register Sinatra::Reloader
-#    also_reload File.dirname(__FILE__) + "/views"
+    register Sinatra::Reloader
+    also_reload File.dirname(__FILE__) + "/views"
+    also_reload File.dirname(__FILE__) + "/lib"
   end
 
   configure(:staging) do

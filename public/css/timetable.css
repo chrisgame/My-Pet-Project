@@ -1,0 +1,33 @@
+ol#timetable{
+    margin: 20px;
+    padding: 0px;
+}
+
+#timetable ul{
+    padding: 0px;
+}
+
+#timetable ul li{
+    list-style: none;
+    float: left;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+#timetable ul li img{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+#timetable ul li .2 img,
+#timetable ul li .3 img,
+#timetable ul li .4 img{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+#timetable #lastmonth ul li,
+#timetable #nextmonth ul li{
+    background-color: gray;
+}
+
