@@ -1,6 +1,6 @@
 #timeline{:style => "overflow : hidden;"}
   %ul.tl-events
-    -EVENT_STORE.get_timeline.each do |month_and_year, days|
+      -EVENT_STORE.get_timeline.each do |month_and_year, days|
       %li.first
         %h3
           =month_and_year

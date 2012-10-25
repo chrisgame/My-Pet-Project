@@ -1,55 +1,17 @@
-%body
+%body.assetTimetable
   -ASSET_STORE.get_all_assets_grouped_by_year_then_month.each do |date, filenames|
-    %h2
-      ="#{Date::MONTHNAMES[date[4..5].to_i]} #{date[0..3]}"
+    %center
+      %h2
+        ="#{Date::MONTHNAMES[date[4..5].to_i]} #{date[0..3]}"
     %ol#timetable
-      %li#lastMonth
-        %ul
-          %li
-            30
-          %li
-            31
       %li#thisMonth
-        %ul
-          %li
-            1
-          %li
-            2
-          %li
-            3
-          %li
-            4
-          %li
-            5
-          %li
-            6
-          %li
-            7
-          %li
-            8
-          %li
-            9
-          %li
-            10
-          %li
-            11
-          %li
-            12
-          %li
-            13
-          %li
-            =date[6..8]
-            -filenames.each do |filename|
-              %img{:src=>filename}
-      %li#nextMonth
-        %ul
-          %li
-            1
-          %li
-            2
-          %li
-            3
-          %li
-            4
-          %li
-            5
+        %ol.days
+          -days_in_month(date[4..5].to_i).times do |day|
+            %li
+              ="#{day+1}"
+              -if date[6..8].to_i == day
+                %ol.images
+                  -filenames.each do |filename|
+                    %li
+                      %img{:src=>filename}
+

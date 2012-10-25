@@ -14,4 +14,8 @@ class MyPetProject < Sinatra::Base
   get '/menu' do
     haml :menu
   end
+
+  def days_in_month month_number
+    (Date.new(Time.now.year,12,31).to_date<<(12-month_number)).day
+  end
 end

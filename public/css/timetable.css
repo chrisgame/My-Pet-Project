@@ -1,33 +1,43 @@
-ol#timetable{
+.assetTimetable h2{
+    font-family: helvetica;
+    font-size: 50px;
+}
+
+.assetTimetable ol#timetable{
     margin: 20px;
     padding: 0px;
+    display: inline-block;
+    list-style: none;
 }
 
-#timetable ul{
+.assetTimetable #timetable ol{
     padding: 0px;
 }
 
-#timetable ul li{
+.assetTimetable #timetable .days li{
     list-style: none;
     float: left;
-    min-width: 200px;
-    min-height: 200px;
+    width: 200px;
+    height: 174px;
+    border: 1px solid #FFE807;
+    font-family: helvetica;
+    font-size: 18px;
 }
 
-#timetable ul li img{
+.assetTimetable #timetable ol.images li{
+  border: none;
+  /*display: none;*/
+}
+
+.assetTimetable #timetable ol li img{
     max-width: 200px;
-    max-height: 200px;
+    max-height: 174px;
 }
 
-#timetable ul li .2 img,
-#timetable ul li .3 img,
-#timetable ul li .4 img{
-    max-width: 100px;
-    max-height: 100px;
-}
-
-#timetable #lastmonth ul li,
-#timetable #nextmonth ul li{
-    background-color: gray;
+.assetTimetable #timetable ol li .2 img,
+.assetTimetable #timetable ol li .3 img,
+.assetTimetable #timetable ol li .4 img{
+    max-width: 50%;
+    max-height: 50%;
 }
 
