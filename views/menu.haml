@@ -1,7 +1,9 @@
 %link{:rel => 'stylesheet', :href => '/menu.css', :media => 'screen'}
-.menu
-  %ol
-    %li
-      %a#homelink.inactive{:href => '/#final'} Home
-    %li
-      %a#timelineLink.active{:href => 'timeline'} Timeline
+%nav.navbar.navbar-inverse.navbar-fixed-top.menu
+  .navbar-inner
+    .container-fluid
+      %ol
+        %li
+          %a#homelink.inactive{:href => '/'} Home
+        %li
+          %a#timelineLink.active{:href => 'timeline'} Timeline

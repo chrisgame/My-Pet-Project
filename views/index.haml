@@ -5,13 +5,8 @@
 %script{:src => "js/homepage.js", :type => "text/javascript"}
 %script{:src => "js/count-up-timer.js", :type => "text/javascript"}
 %body
-.menu
- %ol
-  %li
-   %a#homeLink.active{:href => '/'} Home
-  %li
-   %a#timelineLink.inactive{:href => '/timeline'} Timeline
-.centreBar
-.edge
-.countUpTimer Click To Enter
+  .centreBar
+  .countUpTimer
+  %a.enterLink{:href => '/timeline'}
+    Click To Enter
 

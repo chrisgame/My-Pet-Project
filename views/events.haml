@@ -1,18 +1,16 @@
 -@page_title = "The events of #{Date::MONTHNAMES[params['month'].to_i]} #{params['year']}"
-%body
-  =haml :menu
-  =haml :timeline
-  %ol#eventList.events
-    -locals.sort.collect do |key, value|
-      %li.milestone
-        -key.scan(/(....)(..)(..)/) do |group|
-          %a #{group[2]}-#{Date::MONTHNAMES[group[1].to_i]}-#{group[0]}  -   #{value[:pageTitle]}
-          .articleContent
-            -value[:body].each do |key, value|
-              -case key
-              -when /h1(.*)/
-                %h1=value
-              -when /p(.*)/
-                %p=value
-              -when /image(.*)/
-                %img{:src => value[:src], :alt => value[:alt], :id => value[:id], :width => value[:width]}
+=haml :timeline
+%ol#eventList.events
+  -locals.sort.collect do |key, value|
+    %li.milestone
+      -key.scan(/(....)(..)(..)/) do |group|
+        %a #{group[2]}-#{Date::MONTHNAMES[group[1].to_i]}-#{group[0]}  -   #{value[:pageTitle]}
+        .articleContent
+          -value[:body].each do |key, value|
+            -case key
+            -when /h1(.*)/
+              %h1=value
+            -when /p(.*)/
+              %p=value
+            -when /image(.*)/
+              %img{:src => value[:src], :alt => value[:alt], :id => value[:id], :width => value[:width]}

@@ -1,15 +1,8 @@
-div.menu {
-    background-color:#666666;
-    height:50px;
-    margin-top:-15px;
-}
-
-div.menu ol {
+nav.menu ol {
     list-style-type:none;
-    padding-left:0px;
 }
 
-div.menu ol li div {
+nav.menu ol li div {
     width:100px;
     height:100%;
     float:left;
@@ -18,12 +11,11 @@ div.menu ol li div {
     margin-top:15px;
 }
 
-div.menu ol li:hover{
-
+nav.menu ol li:hover{
     cursor:pointer;
 }
 
-div.menu ol li a{
+nav.menu ol li a{
     padding-top:15px;
     width:100px;
     height:35px;
@@ -31,18 +23,19 @@ div.menu ol li a{
     font-size:20px;
     text-align:center;
     text-decoration:none;
-    color:black;
+    color:#999999;
 }
 
-div.menu ol li a.inactive:hover{
-    background: -moz-linear-gradient(top, #666, #000);
-    background: -webkit-gradient(linear, center top, center bottom, from(#666), to(#000));
-    filter: progigid:DXImageTransform.Microsoft.gradient(startColorstr='#666', endColorstr=#000);
+nav.menu ol li a.inactive:hover{
     color:#FFE807;
     text-decoration:underline;
     cursor:pointer;
 }
 
-div.menu ol li a.active{
+nav.menu ol li a.active{
     color:#FFE807;
+}
+
+.after-nav{
+    margin-top: 65px;
 }
