@@ -1,4 +1,4 @@
-%body.assetTimetable
+%body.galleryTimeline
   -ASSET_STORE.get_all_assets_grouped_by_year_then_month.each do |date, filenames|
     %center
       %h2
@@ -13,5 +13,5 @@
                 %ol.images
                   -filenames.each do |filename|
                     %li
-                      %img{:src=>filename}
+                      %img{:src=>"/#{filename}"}
 

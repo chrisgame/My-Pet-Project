@@ -18,12 +18,12 @@ class MyPetProject < Sinatra::Base
     haml :single_image
   end
 
-  get '/asset-catalogue' do
-    haml :asset_catalogue
+  get '/gallery' do
+    haml :gallery
   end
 
-  get '/asset-timetable' do
-    haml :asset_timetable
+  get '/gallery/timeline' do
+    haml :gallery_timeline
   end
 end
 
