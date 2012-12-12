@@ -29,33 +29,23 @@
         return this.each(function(){
             $(this).html(
                     '<ol id=years>' +
-                    '   <li class=value>'+years+
-                    '       <span class=separator>:</span>' +
-                    '   </li>' +
+                    '   <li class=value>'+years+'<span class=separator>:</span></li>' +
                     '   <li class=caption>years</li>' +
                     '</ol>' +
                     '<ol id=days>' +
-                    '   <li class=value>'+days+
-                    '       <span class=separator>:</span>' +
-                    '   </li>' +
+                    '   <li class=value>'+days+'<span class=separator>:</span></li>' +
                     '   <li class=caption>days</li>' +
                     '</ol>' +
                     '<ol id=hours>' +
-                    '   <li class=value>'+hours+
-                    '       <span class=separator>:</span>' +
-                    '   </li>' +
+                    '   <li class=value>'+hours+'<span class=separator>:</span></li>' +
                     '   <li class=caption>hours</li>' +
                     '</ol>' +
                     '<ol id=minutes>' +
-                    '   <li class=value>'+minutes+
-                    '       <span class=separator>:</span>' +
-                    '   </li>' +
+                    '   <li class=value>'+minutes+'<span class=separator>:</span></li>' +
                     '   <li class=caption>minutes</li>' +
                     '</ol>' +
                     '<ol id=seconds>' +
-                    '   <li class=value>'+seconds+
-                    '       <span class=separator>:</span>' +
-                    '   </li>' +
+                    '   <li class=value>'+seconds+'<span class=separator>:</span></li>' +
                     '   <li class=caption>seconds</li>' +
                     '</ol>' +
                     '<ol id=milliseconds>' +

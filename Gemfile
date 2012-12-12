@@ -6,6 +6,7 @@ gem "heroku"
 gem "rake"
 gem "newrelic_rpm"
 gem "exifr"
+gem "sprockets"
 
 group :development do
   gem "thin"

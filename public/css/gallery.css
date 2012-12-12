@@ -45,3 +45,15 @@
     margin-left: 0px
 }
 
+.buttonbar{
+    margin-left: 45%;
+}
+
+.imageList{
+  list-style: none;
+}
+
+.imageList li img{
+  height: 50%;
+  float: left;
+}

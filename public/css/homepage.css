@@ -1,3 +1,7 @@
+.container-fluid{
+    padding-left: 0px;
+}
+
 body{
     background:black;
     margin: -16px 0 0 0;
@@ -5,15 +9,12 @@ body{
     font-size: 85%;
 }
 
-.countUpTimer,
-div.centre {
+.centredCountUpTimer {
     background:#FFE807;
-    height:100px;
-    left:0;
-    position:absolute;
-    right:0;
-    top:45%;
+    height:114px;
+    margin-top:17%;
     width:100%;
+    text-align: center;
     padding-left:32%;
     font-family:serif;
     color: #000000;
@@ -23,47 +24,39 @@ div.centreBar:hover {
     cursor:pointer;
 }
 
-.countUpTimer ol{
+.centredCountUpTimer ol{
     float:left;
     margin-top:40px;
     list-style-type:none;
     font-size:100px;
 }
 
-.countUpTimer ol#milliseconds{
+.centredCountUpTimer ol#milliseconds{
     display:none;
 }
 
-.countUpTimer ol#seconds span.separator{
+.centredCountUpTimer ol#seconds span.separator{
     display:none;
 }
 
-.countUpTimer li.value{
-    margin-top:-7px;
-}
-
-.countUpTimer span.separator{
-    position:absolute;
+.centredCountUpTimer span.separator{
     top:20px;
 }
 
-.countUpTimer li.caption{
+.centredCountUpTimer li.caption{
     font-size:20px;
     margin-left:0;
     margin-top:2px;
     text-align:center;
-}
-
-.countUpTimer ol#years{
-    padding-left:0px;
+    padding-right: 34px;
 }
 
 .enterLink{
     color: #ffffff;
     font-size: 20px;
     margin-top: 400px;
-    padding-left: 900px;
-    position: absolute;
+    margin-left: 900px;
+    text-align: center;
 }
 
 .enterLink:hover{

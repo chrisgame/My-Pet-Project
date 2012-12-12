@@ -1,4 +1,10 @@
 %body.galleryTimeline
+  .buttonBar
+    %a.btn.btn-primary{href: '/gallery'}
+      List
+    %a.btn.btn-primary{href: '/gallery/timeline'}
+      Timeline
+
   -ASSET_STORE.get_all_assets_grouped_by_year_then_month.each do |date, filenames|
     %center
       %h2

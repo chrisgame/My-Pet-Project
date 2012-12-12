@@ -1,8 +1,8 @@
 $(function(){
 
-    $('div  .countUpTimer').countUpTimer();
+    $('div  .centredCountUpTimer').countUpTimer();
     $(document).everyTime(1000,function(){
-        $('div.countUpTimer').countUpTimer();
+        $('div.centredCountUpTimer').countUpTimer();
     }, 0);
 
 });jQuery();

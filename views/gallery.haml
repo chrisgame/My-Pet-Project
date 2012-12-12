@@ -1,8 +1,12 @@
 -@page_title="Asset Catalogue"
 %body
-  %ul
-  -ASSET_STORE.get_all_assets.each do |filename|
-    %li
-      %div
-        -filename
-      %img{:src=>filename}
+  .buttonBar
+    %a.btn.btn-primary{href: '/gallery'}
+      List
+    %a.btn.btn-primary{href: '/gallery/timeline'}
+      Timeline
+
+  %ul.imageList
+    -ASSET_STORE.get_all_assets.each do |filename|
+      %li
+        %img{:src=>filename}
