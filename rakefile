@@ -1,17 +1,7 @@
 require 'bundler/setup'
-require "#{File.dirname(__FILE__)}/Testing/features/support/app_client"
 require 'rake'
+require 'cucumber/rake/task'
 
-ROOT_DIR = "#{File.dirname(__FILE__)}"
-
-namespace :local do
-  task :start do
-    ENV['RACK_ENV'] = 'local'
-    MyPetProject::AppClient.start
-    include MyPetProject::AppClient
-  end
-  task :stop do
-    MyPetProject::AppClient.stop
-    include MyPetProject::AppClient
-  end
+Cucumber::Rake::Task.new(:default) do |task|
+  task.cucumber_opts = ['features']
 end

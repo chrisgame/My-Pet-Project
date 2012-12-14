@@ -13,3 +13,11 @@ group :development do
   gem "shotgun"
   gem "sinatra-contrib"
 end
+
+group :test do
+  gem "cucumber"
+  gem "watir-webdriver"
+  gem "rspec"
+  gem "rake"
+  gem "multipart-post"
+end
