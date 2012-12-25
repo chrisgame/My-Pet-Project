@@ -19,11 +19,11 @@ class MyPetProject < Sinatra::Base
   end
 
   get '/gallery' do
-    haml :gallery
+    haml :'gallery/list'
   end
 
   get '/gallery/timeline' do
-    haml :gallery_timeline
+    haml :'gallery/timeline'
   end
 end
 
