@@ -1,0 +1,8 @@
+-@page_title="Gallery"
+%body
+  =haml :'gallery/button_bar', layout: false
+
+  %ul.imageList
+    -ASSET_STORE.get_all_assets.each do |filename|
+      %li
+        %img{:src=>filename}
