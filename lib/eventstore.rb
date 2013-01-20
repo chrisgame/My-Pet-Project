@@ -25,6 +25,7 @@ module EventStore
 
         data.store @key, [:title => YAML::load(File.read(filename))[:body]['h1_1'], :day => @day, :link => "/event/#{@year}/#{@month}/#{@day}"]
       end
+      binding.pry
       data
     end
 
@@ -56,9 +57,33 @@ module EventStore
     end
   end
   class S3EventStore
-    AWS_ACCESS_KEY = 'AKIAI3HDDHE7NJ2HWRQA'
-    AWS_SECRET_ACCESS_KEY = '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'
-    AWS_BUCKET = 'gt40.freakypenguin'
+    ACCESS_KEY = ENV['FP_AWS_ACCESS_KEY']
+    SECRET_ACCESS_KEY = ENV['FP_AWS_SECRET_ACCESS_KEY']
+    BUCKET = 'gt40.freakypenguin.com'
+    puts ACCESS_KEY
+    puts SECRET_ACCESS_KEY
+    
+    def initialize
+      @s3 = RightAws::S3.new(ACCESS_KEY, SECRET_ACCESS_KEY)
+      @gt40bucket = @s3.bucket(BUCKET)
+    end
+
+    def get_timeline
+      filenames = @gt40bucket.keys.select{|article| article.to_s =~ /.yaml/}
+      data = Hash.new
+      filenames.each do |s3Obj|
+        puts s3Obj.to_s
+        s3Obj.to_s.scan(/articles\/(....)(..)(..)/) do |group|
+          @day = group[2]
+          @month = group[1]
+          @year = group[0]
+          @key = "#{Date::MONTHNAMES[@month.to_i].capitalize} #{@year}"
+        end
+        data[@key] ||= []
+        data[@key] << {:title => YAML::load(@gt40bucket.get(s3Obj))[:body]['h1_1'], :day => @day, :link => "/event/#{@year}/#{@month}/#{@day}"}
+      end
+      data
+    end
 
     def get_all_events_for_year year
 
@@ -69,9 +94,7 @@ module EventStore
     end
 
     def put_event(body, year, month, day)
-      s3 = RightAws::S3.new(AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY)
-      gt40bucket = s3.bucket(AWS_BUCKET)
-      gt40bucket.put("carbuildsite/#{year}#{month}#{day}.yaml", body, 'public-read')
+      @gt40bucket.put("pages/#{year}#{month}#{day}.yaml", body, 'public-read')
     end
   end
 end

@@ -7,6 +7,9 @@ gem "rake"
 gem "newrelic_rpm"
 gem "exifr"
 gem "sprockets"
+gem 'right_aws'
+gem 'pry'
+
 
 group :development do
   gem "thin"
@@ -21,3 +24,4 @@ group :test do
   gem "rake"
   gem "multipart-post"
 end
+
